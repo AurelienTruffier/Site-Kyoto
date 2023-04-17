@@ -1,0 +1,705 @@
+*, ::before, ::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Nunito sans', sans-serif;
+}
+
+/* menu de navigation */
+
+nav{
+    position: fixed;
+    width: 100%;
+    height: 75px;
+    background-image: linear-gradient(to bottom, #333, #626262);
+    z-index: 10;
+}
+
+.logo-menu{
+    display: none;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width:36px;
+    z-index: 20;
+}
+
+.liste-nav{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    width: 100%;
+    height: 100%;
+    /* pour avoir un rendu identique quand le menu s'affiche sur téléphone */
+    background-image: linear-gradient(to bottom, #333, #626262);
+    z-index: 15;
+}
+
+.item-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-nav a{
+    font-size: 1.6rem;
+    color: #f1f1f1;
+    text-decoration: none;
+    margin: 0 32px;
+    text-transform: uppercase;
+}
+
+.item-nav a::after{
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 0%;
+    height: 2px;
+    background-color: #f1f1f1;
+    transition: width 0.3s ease-in-out;
+}
+
+.item-nav a:hover::after{
+    width: 100%;
+}
+
+@media screen and (max-width: 720px){
+    .logo-menu{
+        display: block;
+    }
+    .liste-nav{
+        display: none;
+        position: relative;
+        padding-top: 75px;
+        flex-direction: column;
+        height: auto;
+    }
+    .liste-nav.active{
+        display: block;
+    }
+    .item-nav{
+        height: 75px;
+        justify-content: center;
+    }
+}
+
+/* accueil */
+
+.accueil{
+    width: 100%;
+    height: 100vh;
+    min-height: 970px;
+    background-image: url(ressources/accueil-pic-lum-down.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 1px dotted #777;
+    /* pour éviter la fusion des marges avec logo-kyoto */
+    padding-top: 1px;
+}
+
+.logo-kyoto{
+    border-radius: 50%;
+    width: 180px;
+    display: block;
+    margin: 180px auto 0px;
+}
+
+.accueil h1{
+    text-align: center;
+    font-size: 5rem;
+    text-shadow: 0 0 10px #000;
+    color: #f1f1f1;
+    margin-top: 10px;
+    font-family: 'Merienda one', sans-serif;
+}
+
+.sous-titre{
+    text-align: center;
+    font-size: 1.8rem;
+    color: #f1f1f1;
+    font-weight: 800;
+    margin: 8px 0;
+    text-shadow: 0 0 10px #000;
+}
+
+.btn-accueil{
+    display: block;
+    border-radius: 9999px;
+    background-color: crimson;
+    border: 1px solid #333;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #f1f1f1;
+    width: 200px;
+    height: 70px;
+    line-height: 70px;
+    margin: 30px auto 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-accueil:hover{
+    background-color: rgb(190, 0, 40);
+    color: #fff;
+}
+
+@media screen and (max-width: 780px){
+    .accueil {
+        height: 700px;
+        min-height: auto;
+        background-position: right;
+    }
+
+    .logo-kyoto{
+        margin: 120px auto 0;
+    }
+
+    .accueil h1{
+        font-size: 3rem;
+    }
+
+    .sous-titre {
+        font-size: 1.6rem;
+    }
+
+    .btn-accueil{
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 1.2rem;
+        margin: 15px auto 0;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .accueil {
+        height: 600px;
+    }
+
+    .logo-kyoto{
+        width: 150px;
+        margin: 120px auto 0;
+    }
+
+    .accueil h1{
+        font-size: 2.5rem;
+    }
+
+    .sous-titre {
+        font-size: 1.5rem;
+    }
+
+    .btn-accueil{
+        width: 130px;
+        height: 45px;
+        line-height: 45px;
+        font-size: 1rem;
+        margin: 15px auto 0;
+    }
+}
+
+/* section asymétrique */
+
+.section-asymetrique{
+    display: grid;
+    grid-template-rows: 200px repeat(3, auto);
+    grid-template-columns: 1fr 600px 1fr;
+    background-color: #f1f1f1;
+}
+
+.section-asymetrique h2{
+    display: flex;
+    grid-area: 1/1/2/-1;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 3rem;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+/* placement des éléments */
+
+.bloc-1, .img-grid-1{
+    grid-area: 2/2/3/3;
+    justify-self: center;
+}
+
+.bloc-right, .img-grid-2{
+    grid-area: 3/2/4/3;
+}
+
+.img-grid-2{
+    justify-self: center;
+}
+
+.bloc-3, .img-grid-3{
+    grid-area: 4/2/5/3;
+    justify-self: center;
+}
+
+.bloc{
+    position: relative;
+    height: 750px;
+    margin-bottom: 250px;
+    background-color: #333;
+    color: #f1f1f1;
+    border-radius: 3px;
+}
+
+.img-grid {
+    position: relative;
+    width: 500px;
+    height: 700px;
+    object-fit: cover;
+}
+
+.img-grid-1, .img-grid-3{
+    top: 130px;
+    left: 20px;
+}
+
+.bloc-left{
+    left: -300px;
+}
+
+.bloc-txt-left{
+    width:50%;
+    height: 100%;
+}
+
+.bloc-txt-left h3{
+    white-space: nowrap;
+    font-size: 2.5rem;
+    margin: 30px 15px;
+}
+
+.bloc-txt-left p{
+    line-height: 40px;
+    padding: 15px;
+}
+
+.bloc button {
+    display: block;
+    font-size: 1.2rem;
+    border-radius: 9999px;
+    outline: none;
+    border: none;
+    background-color: crimson;
+    border: 1px solid #333;
+    color: #f1f1f1;
+    margin: 35px auto;
+    cursor: pointer;
+    padding: 20px 35px;
+}
+
+.bloc-right {
+    right: -300px;
+    top: 130px;
+}
+
+.bloc-txt-right {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+}
+
+.bloc-txt-right h3 {
+    position: relative;
+    font-size: 2.5rem;
+    margin: 30px 15px;
+}
+
+.bloc-txt-right p{
+    line-height: 40px;
+    padding: 15px;
+}
+
+.bloc-txt-right button {
+    margin: 8px auto;
+}
+
+/* lignes */
+
+.ligne-gauche{
+    grid-area: 1/2/-1/3;
+    border-left: 1px solid #333;
+}
+
+.ligne-droite{
+    grid-area: 1/3/-1/4;
+    border-left: 1px solid #333;
+}
+
+@media screen and (max-width: 1200px){
+    .section-asymetrique{
+        grid-template-rows: 200px repeat(6, auto) 100px;
+        grid-template-columns: 1fr 600px 1fr;
+    }
+
+    .section-asymetrique h2{
+        font-size: 2.5rem;
+        padding-bottom: 0px;
+    }
+
+    .bloc-1 {
+        grid-area: 2/2/3/3;
+    }
+
+    .img-grid-1{
+        grid-area: 3/2/4/3;
+    }
+
+    .bloc-right {
+        grid-area: 4/2/5/3;
+    }
+
+    .img-grid-2{
+        grid-area: 5/2/6/3;
+    }
+
+    .bloc-3{
+        grid-area: 6/2/7/3;
+    }
+    
+    .img-grid-3{
+        grid-area: 7/2/8/3;
+    }
+
+    .bloc {
+        height: 100%;
+        margin-bottom: 0px;
+    }
+
+    .img-grid{
+        position: static;
+        width: 600px;
+        height: 750px;
+    }
+
+    .img-grid-1, .img-grid-3{
+        top: 0px;
+        left: 0px;
+    }
+
+    .img-grid-2{
+        top: 0px;
+        left: 0px;
+    }
+
+    .bloc-left{
+        left: 0px;
+    }
+
+    .bloc-right{
+        right: 0px;
+    }
+
+    .bloc-txt-left{
+        width: 100%;
+        height: 100%;
+    }
+
+    .bloc-txt-left h3, .bloc-txt-right h3{
+        text-align: center;
+    }
+
+    .bloc-txt-left p, .bloc-txt-right p{
+        padding: 15px;
+        line-height: 1.8;
+    }
+
+    .bloc button{
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        padding: 15px 30px;
+    }
+
+    .bloc-txt-right{
+        position: static;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .section-asymetrique {
+        grid-template: 150px repeat(6, auto) 100px / 100%;;
+    }
+
+    .ligne-gauche, .ligne-droite{
+        display: none;
+    }
+
+    .section-asymetrique h2{
+        font-size: 2rem;
+    }
+
+    .bloc, .img-grid{
+        grid-area: auto;
+    }
+
+    .img-grid{
+        width: 100%;
+        height: 500px;
+    }
+
+    .bloc-txt-right{
+        width: 100%;
+    }
+
+    .bloc-txt-left h3, .bloc-txt-right h3{
+        font-size: 1.8rem;
+    }
+}
+
+/* section parallax */
+
+.parallax{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    background-image: url(ressources/parallax-large-flou.jpg);
+    background-position: center;
+    background-attachment: fixed;
+}
+.parallax p{
+    font-size: 5rem;
+    color: #f1f1f1;
+}
+.parallax span{
+    display: block;
+    font-size: 1.6rem;
+    color: #f1f1f1;
+}
+
+@media screen and (max-width: 460px){
+    .parallax p {
+        font-size: 3rem;
+    }
+    .parallax span{
+        font-size: 1.3rem;
+    }
+}
+
+/* section tarifs */
+
+.section-tarifs {
+    padding-bottom: 150px;
+    border-bottom: 1px dashed #333;
+}
+
+.section-tarifs h3{
+    text-align: center;
+    font-size: 2.8rem;
+    margin: 120px 0 20px;
+    padding: 0 30px;
+}
+
+.section-tarifs hr{
+    width: 200px;
+    margin: 20px auto 100px;
+}
+
+.container-tarifs{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cartes-tarifs{
+    position: relative;
+    width: 350px;
+    height: auto;
+    border-radius: 6px;
+    margin: 16px 16px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transform: all 0.2s ease-in-out;
+}
+
+.cartes-tarifs:hover{
+    transform: translateY(-5px);
+}
+
+.cartes-tarifs h4{
+    background-color: #ffafbf;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 2.2rem;
+    clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);
+}
+
+.cartes-tarifs span{
+    display: block;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.cartes-tarifs:nth-child(2) h4{
+    background-color: #ff5073;;
+}
+
+.cartes-tarifs:nth-child(3) h4{
+    background-color: #ff0033;;
+}
+
+.cartes-tarifs p{
+    font-size: 1.2rem;
+    padding: 20px 10px;
+    border-top: 1px solid rgb(194,197, 194);
+}
+
+.cartes-tarifs p:last-of-type{
+    border-bottom: 1px solid rgb(194,197, 194);
+}
+
+.cartes-tarifs p:nth-child(odd){
+    background-color: rgba(195, 195, 195, 0.2);
+}
+
+.cartes-tarifs a{
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #333;
+    width: 200px;
+    height: 50px;
+    border-radius: 9999px;
+    font-size: 1.2rem;
+    margin: 20px auto;
+    transition: all 0.2s ease-in-out;
+}
+
+.cartes-tarifs a:hover{
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+@media screen and (max-width: 900px) {
+    .section-tarifs h3{
+        font-size: 2.3rem;
+        margin: 80px 0 80px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .section-tarifs h3{
+        font-size: 1.8rem;
+        padding: 0 10px;
+        margin: 50px 0;
+    }
+
+    .section-tarifs hr{
+        margin: 20px auto 20px;
+    }
+}
+
+/* section contact */
+
+.section-contact{
+    padding-bottom: 100px;
+}
+
+.section-contact h2{
+    text-align: center;
+    color: #333;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 50px;
+    padding: 70px 0 0 0;
+}
+
+.section-contact h2 strong{
+    font-weight: 900;
+}
+
+.container-form {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.form-groupe{
+    position: relative;
+    margin-bottom: 45px;
+    color: #aaa;
+    font-size: 1.5rem;
+}
+
+.form-groupe input{
+    display: block;
+    width: 100%;
+    padding: 10px 0px;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 3px solid #aaa;
+    color: #666;
+}
+
+textarea{
+    width: 100%;
+    height: 200px;
+    font-size: 1.2rem;
+    border: none;
+    border: 3px solid #aaa;
+    border-radius: 5px;
+    padding: 5px;
+    background: #f1f1f1;
+    /* empêche le changement de taille de la textarea par l'utilisateur */
+    resize: none;
+}
+
+.form-groupe:nth-child(4){
+    margin-bottom: 20px;
+}
+
+.form-groupe .btn-sub{
+    display: block;
+    width: auto;
+    padding: 15px 60px;
+    border: 3px solid rgb(144, 144, 144);
+    border-radius: 9999px;
+    background-image: linear-gradient(to right, transparent 50%, rgb(65,65,65) 50%, rgb(134,134, 134));
+    background-size: 200%;
+    color: #333;
+    font-size: 1.6rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-groupe .btn-sub:hover {
+    color: #fff;
+    background-position: 100%;
+    border: 3px solid #fff;
+}
+
+@media screen and (max-width: 1300px){
+    .section-contact h2{
+        padding: 70px 0 0 0;
+    }
+    .container-form{
+        padding-left: 0;
+    }
+}
+
+/* footer */
+footer {
+    border-top: 1px solid #333;
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 10px;
+}
